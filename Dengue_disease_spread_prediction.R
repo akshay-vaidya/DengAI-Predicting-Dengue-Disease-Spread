@@ -30,7 +30,7 @@ my.prediction <- predict(tree.model, dat_test)
 test1<-dat_test["city"]
 test2<-cbind(test1,dat_test["weekofyear"],dat_test["year"])
 prediction<-(data.frame(my.prediction))
-test2<-cbind(test2,prediction["my.prediction"])
+test2<-cbind(test2,round(prediction["my.prediction"]))
 write.csv(test2, file = "F:\\Data driven competitions\\predict_dengue\\predictions.csv", fileEncoding = "UTF-16LE")
 
 
