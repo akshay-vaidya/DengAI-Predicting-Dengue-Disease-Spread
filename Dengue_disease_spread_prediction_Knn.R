@@ -12,6 +12,11 @@ for (i in 1:dim(test)[2]) {
 	means=colMeans(test[i],na.rm=TRUE)
 	test[i][is.na(test[i])]= means }
 
+for (i in 1:dim(training)[2]) {
+means=colMeans(training[i],na.rm=TRUE)
+training[i][is.na(training[i])]= means }
+
+
 deng_kknn <- kknn(total_cases~., training, test, distance = 1, na.action=na.pass, kernel = "triangular")
 fit <- fitted(deng_kknn)
 fit<-data.frame(fit)
@@ -23,3 +28,8 @@ test2<-cbind(test2,round(fit["fit"]))
 
 write.csv(test2, file = "F:\\Data driven competitions\\predict_dengue\\predictions.csv", fileEncoding = "UTF-16LE")
 
+
+
+for (i in 1:dim(training)[2]) {
+	means=colMeans(training[i],na.rm=TRUE)
+	training[i][is.na(training[i])]= means }
